@@ -3,17 +3,23 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component { 
-  // onClick(){
-  //   alert('Clicked');
-  // }
+  
+  constructor(props){
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onClick(){
+    alert('Clicked');
+  }
 
   onChange(event){
     console.log(event.target.value);
   } 
-
+  
   onSubmit(event){
     event.preventDefault();
-    alert('submitted');
+    console.log(this.input.value);
   }
 
   render() {
@@ -36,7 +42,7 @@ class App extends Component {
           }
         </h2>
         <form onSubmit={this.onSubmit}>
-          <input onChange={this.onChange}/>
+          <input onChange={this.onChange} ref={input => this.input = input} />
         </form>
       </div>
     );
